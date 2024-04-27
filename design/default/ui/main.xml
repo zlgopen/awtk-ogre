@@ -1,0 +1,25 @@
+<window name="main" style:normal:bg_color="rgba(0,0,0,0)">
+  <label x="c" y="60" w="80%" h="36" text="awtk ogre demo" style:normal:bg_color="#cccccc"/>
+  <view x="0" y="b" w="120" h="120" children_layout="default(r=4,c=3)" name="camera">
+    <draggable drag_parent="true" visible="false"/>
+    <label />
+    <button name="camera_up" style="up"/>
+    <label />
+    <button name="camera_left" style="left"/>
+    <label />
+    <button name="camera_right" style="right"/>
+    <label />
+    <button name="camera_down" style="down"/>
+    <label />
+    <button name="camera_zoom_out" style="zoom_out" text="-"/>
+    <button name="camera_zoom_0" style="zoom_1" text="0"/>
+    <button name="camera_zoom_in" style="zoom_in" text="+"/>
+  </view>
+
+  <view x="r" y="b" w="240" h="68" children_layout="default(r=2,c=2,s=5)" name="toolbar">
+    <button name="dialog" text="button"/>
+    <label name="label" text="label"/>
+    <edit name="edit" text=""/>
+    <combo_box name="options" options="1;2;3;4;5;6" value="0"/>
+  </view>
+</window>

@@ -1,0 +1,33 @@
+
+<button>
+  <style name="down" bg_color="#F2F2F2" border_color="#C2C2C2">
+    <normal icon="arrow_down_n"/>
+    <disable bg_color="#F2F2F266" border_color="#C2C2C266" icon="arrow_down_d"/>
+    <over icon="arrow_down_o" text_color="#FFFFFF"/>
+    <pressed icon="arrow_down_p" bg_color="#1971DD" border_color="#1971DD" text_color="#FFFFFF"/>
+  </style>
+  <style name="left" bg_color="#F2F2F2" border_color="#C2C2C2">
+    <normal icon="arrow_left_n"/>
+    <disable bg_color="#F2F2F266" border_color="#C2C2C266" icon="arrow_left_d"/>
+    <over icon="arrow_left_o" text_color="#FFFFFF"/>
+    <pressed icon="arrow_left_p" bg_color="#1971DD" border_color="#1971DD" text_color="#FFFFFF"/>
+  </style>
+  <style name="right" bg_color="#F2F2F2" border_color="#C2C2C2">
+    <normal icon="arrow_right_n"/>
+    <disable bg_color="#F2F2F266" border_color="#C2C2C266" icon="arrow_right_d"/>
+    <over icon="arrow_right_o" text_color="#FFFFFF"/>
+    <pressed icon="arrow_right_p" bg_color="#1971DD" border_color="#1971DD" text_color="#FFFFFF"/>
+  </style>
+  <style name="up" bg_color="#F2F2F2" border_color="#C2C2C2">
+    <normal icon="arrow_up_n"/>
+    <disable bg_color="#F2F2F266" border_color="#C2C2C266" icon="arrow_up_d"/>
+    <over icon="arrow_up_o" text_color="#FFFFFF"/>
+    <pressed icon="arrow_up_p" bg_color="#1971DD" border_color="#1971DD" text_color="#FFFFFF"/>
+  </style>
+</button>
+
+<label>
+  <style name="axis_name" text_color="black">
+    <normal bg_color="#F2F2F2" border_color="#C2C2C2">
+  </style>
+</label>

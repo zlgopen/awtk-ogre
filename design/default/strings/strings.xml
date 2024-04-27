@@ -1,0 +1,39 @@
+<string name="return">
+  <language name="zh_CN">返回</language>
+  <language name="en_US">Return</language>
+</string>
+
+<string name="done">
+  <language name="zh_CN">完成</language>
+  <language name="en_US">Done</language>
+</string>
+
+<string name="Space">
+  <language name="zh_CN">空格</language>
+  <language name="en_US">Space</language>
+</string>
+
+<string name="OK">
+  <language name="zh_CN">确定</language>
+  <language name="en_US">OK</language>
+</string>
+
+<string name="Cancel">
+  <language name="zh_CN">取消</language>
+  <language name="en_US">Cancel</language>
+</string>
+
+<string name="Choose...">
+  <language name="zh_CN">选择...</language>
+  <language name="en_US">Choose...</language>
+</string>
+
+<string name="Return Up">
+  <language name="zh_CN">返回上一级</language>
+  <language name="en_US">Return Up</language>
+</string>
+
+<string name="File name">
+  <language name="zh_CN">文件名</language>
+  <language name="en_US">File name</language>
+</string>

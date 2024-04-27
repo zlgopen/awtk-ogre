@@ -1,0 +1,27 @@
+rm -rf build_ogre
+mkdir build_ogre
+cp -fv download/* build_ogre
+
+cmake -S ogre-14.2.3 -B build_ogre \
+-DCMAKE_BUILD_TYPE=Debug \
+-DOGRE_BUILD_SAMPLES=OFF \
+-DOGRE_BUILD_PLUGIN_ASSIMP=OFF \
+-DOGRE_BUILD_LIBS_AS_FRAMEWORKS=OFF \
+-DOGRE_BUILD_COMPONENT_CSHARP=OFF \
+-DOGRE_BUILD_COMPONENT_JAVA=OFF \
+-DOGRE_BUILD_COMPONENT_PYTHON=OFF \
+-DOGRE_BUILD_COMPONENT_TERRAIN=OFF \
+-DOGRE_BUILD_PLUGIN_CG=OFF \
+-DOGRE_BUILD_PLUGIN_PCZ=OFF \
+-DOGRE_CONFIG_ENABLE_ASTC=OFF \
+-DOGRE_CONFIG_ENABLE_ETC=OFF \
+-DOGRE_CONFIG_ENABLE_PVRTC=OFF \
+-DOGRE_CONFIG_ENABLE_DDS=OFF 
+
+cmake --build build_ogre
+
+echo cmake --install build_ogre --prefix .. $CONFIG
+cmake --install build_ogre --prefix .. $CONFIG
+
+
+

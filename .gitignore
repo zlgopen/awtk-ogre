@@ -1,0 +1,9 @@
+3rd/build_assimp/
+3rd/build_mesh_gen/
+3rd/build_ogre/
+CMake/
+bin/
+build/
+include/
+lib/
+res

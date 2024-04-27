@@ -1,0 +1,60 @@
+
+material Material
+{
+	technique
+	{
+		pass 
+		{
+			ambient 0.1 0.1 0.1 1
+			diffuse 0.8 0.8 0.8 1
+			specular 0.4 0.4 0.4 1 10
+		}
+
+	}
+
+}
+
+material xred
+{
+	technique
+	{
+		pass 
+		{
+			ambient 0.1 0.1 0.1 1
+			diffuse 1 0 0 1
+			specular 0.4 0.4 0.4 1 10
+		}
+
+	}
+
+}
+
+material ygreen
+{
+	technique
+	{
+		pass 
+		{
+			ambient 0.1 0.1 0.1 1
+			diffuse 0 1 0 1
+			specular 0.4 0.4 0.4 1 10
+		}
+
+	}
+
+}
+
+material zblue
+{
+	technique
+	{
+		pass 
+		{
+			ambient 0.1 0.1 0.1 1
+			diffuse 0 0 1 1
+			specular 0.4 0.4 0.4 1 10
+		}
+
+	}
+
+}
