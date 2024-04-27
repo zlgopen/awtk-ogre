@@ -28,7 +28,7 @@
 
 class OgreApp : public ApplicationContext, public InputListener, public RenderTargetListener {
  public:
-  OgreApp(const char* app_name);
+  OgreApp(const char* app_name, int w, int h);
 
   virtual ~OgreApp();
 
@@ -66,7 +66,12 @@ class OgreApp : public ApplicationContext, public InputListener, public RenderTa
   bool createAxis(float length, const Vector3& position = Vector3::ZERO);
   SceneNode* createLocalAxes(SceneManager* sceneMgr, SceneNode* parent, const Vector3& size);
 
+  NativeWindowPair createWindow(const Ogre::String& name, uint32_t w, uint32_t h,
+                                Ogre::NameValuePairList miscParams) override;
+
  protected:
+  int mWidth;
+  int mHeight;
   int mMousePressX;
   int mMousePressY;
   int mMouseLastX;

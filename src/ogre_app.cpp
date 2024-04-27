@@ -24,7 +24,7 @@
 
 static ret_t native_window_on_resized_timer(const timer_info_t* info);
 
-OgreApp::OgreApp(const char* app_name)
+OgreApp::OgreApp(const char* app_name, int w, int h)
     : ApplicationContext(std::string(app_name)),
       mMouseIsPressed(false),
       mMousePressX(0),
@@ -33,7 +33,9 @@ OgreApp::OgreApp(const char* app_name)
       mMouseLastY(0),
       mSceneMgr(nullptr),
       mCameraHelper(),
-      mLightHelper() {
+      mLightHelper(),
+      mWidth(w),
+      mHeight(h) {
 }
 
 OgreApp::~OgreApp() {
@@ -78,8 +80,8 @@ bool OgreApp::mouseWheelRolled(const MouseWheelEvent& evt) {
   wheel_event_t event;
   widget_t* widget = window_manager();
   event_t* e = wheel_event_init(&event, EVT_WHEEL, widget, evt.y);
-  window_manager_dispatch_input_event(widget, e);   
-  
+  window_manager_dispatch_input_event(widget, e);
+
   return false;
 }
 
@@ -201,42 +203,46 @@ bool OgreApp::frameRenderingQueued(const FrameEvent& evt) {
 }
 
 // 创建表示局部坐标系的辅助对象
-SceneNode* OgreApp::createLocalAxes(SceneManager* sceneMgr, SceneNode* parent, const Vector3& size) {
-    ManualObject* manualObject = sceneMgr->createManualObject("LocalAxes");
-    // 创建材质
-    MaterialPtr redMaterial = MaterialManager::getSingleton().create("RedMaterial", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
-    redMaterial->setDiffuse(ColourValue::Red);
-    redMaterial->setSelfIllumination(ColourValue::Red); // 可选，使轴更加明亮
+SceneNode* OgreApp::createLocalAxes(SceneManager* sceneMgr, SceneNode* parent,
+                                    const Vector3& size) {
+  ManualObject* manualObject = sceneMgr->createManualObject("LocalAxes");
+  // 创建材质
+  MaterialPtr redMaterial = MaterialManager::getSingleton().create(
+      "RedMaterial", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+  redMaterial->setDiffuse(ColourValue::Red);
+  redMaterial->setSelfIllumination(ColourValue::Red);  // 可选，使轴更加明亮
 
-    MaterialPtr greenMaterial = MaterialManager::getSingleton().create("GreenMaterial", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
-    greenMaterial->setDiffuse(ColourValue::Green);
-    greenMaterial->setSelfIllumination(ColourValue::Green);
+  MaterialPtr greenMaterial = MaterialManager::getSingleton().create(
+      "GreenMaterial", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+  greenMaterial->setDiffuse(ColourValue::Green);
+  greenMaterial->setSelfIllumination(ColourValue::Green);
 
-    MaterialPtr blueMaterial = MaterialManager::getSingleton().create("BlueMaterial", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
-    blueMaterial->setDiffuse(ColourValue::Blue);
-    blueMaterial->setSelfIllumination(ColourValue::Blue);
+  MaterialPtr blueMaterial = MaterialManager::getSingleton().create(
+      "BlueMaterial", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+  blueMaterial->setDiffuse(ColourValue::Blue);
+  blueMaterial->setSelfIllumination(ColourValue::Blue);
 
-    // X 轴
-    manualObject->begin("RedMaterial", RenderOperation::OT_LINE_LIST);
-    manualObject->position(Vector3::ZERO);
-    manualObject->position(size.x, 0, 0);
-    manualObject->end();
+  // X 轴
+  manualObject->begin("RedMaterial", RenderOperation::OT_LINE_LIST);
+  manualObject->position(Vector3::ZERO);
+  manualObject->position(size.x, 0, 0);
+  manualObject->end();
 
-    // Y 轴
-    manualObject->begin("GreenMaterial", RenderOperation::OT_LINE_LIST);
-    manualObject->position(Vector3::ZERO);
-    manualObject->position(0, size.y, 0);
-    manualObject->end();
+  // Y 轴
+  manualObject->begin("GreenMaterial", RenderOperation::OT_LINE_LIST);
+  manualObject->position(Vector3::ZERO);
+  manualObject->position(0, size.y, 0);
+  manualObject->end();
 
-    // Z 轴
-    manualObject->begin("BlueMaterial", RenderOperation::OT_LINE_LIST);
-    manualObject->position(Vector3::ZERO);
-    manualObject->position(0, 0, size.z);
-    manualObject->end();
+  // Z 轴
+  manualObject->begin("BlueMaterial", RenderOperation::OT_LINE_LIST);
+  manualObject->position(Vector3::ZERO);
+  manualObject->position(0, 0, size.z);
+  manualObject->end();
 
-    SceneNode* axesNode = parent->createChildSceneNode("LocalAxesNode");
-    axesNode->attachObject(manualObject);
-    return axesNode;
+  SceneNode* axesNode = parent->createChildSceneNode("LocalAxesNode");
+  axesNode->attachObject(manualObject);
+  return axesNode;
 }
 
 static ret_t native_window_on_resized_timer(const timer_info_t* info) {
@@ -246,4 +252,9 @@ static ret_t native_window_on_resized_timer(const timer_info_t* info) {
 
   log_debug("on_resized_timer\n");
   return RET_REMOVE;
+}
+
+NativeWindowPair OgreApp::createWindow(const Ogre::String& name, uint32_t w, uint32_t h,
+                                       Ogre::NameValuePairList miscParams) {
+  return ApplicationContextSDL::createWindow(name, mWidth, mHeight, miscParams);
 }

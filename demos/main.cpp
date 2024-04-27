@@ -8,7 +8,7 @@ static ret_t on_dialog_clicked(void* ctx, event_t* e) {
 
 class DemoApp : public AwtkOgreApp {
  public:
-  DemoApp(const char* app_name) : AwtkOgreApp(app_name) {
+  DemoApp(const char* app_name, int w, int h) : AwtkOgreApp(app_name, w, h) {
   }
 
   ret_t createUI(void) override {
@@ -33,7 +33,7 @@ class DemoApp : public AwtkOgreApp {
 
 
 int main(int argc, char** argv) {
-  DemoApp app("AwtkOgreApp");
+  DemoApp app("AwtkOgreApp", 800, 600);
 
   app.init(NULL);
   app.run();

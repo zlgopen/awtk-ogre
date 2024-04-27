@@ -6,7 +6,7 @@
 
 class AwtkOgreApp : public AwtkApp, public OgreApp {
  public:
-  AwtkOgreApp(const char* app_name) : AwtkApp(this), OgreApp(app_name) {
+  AwtkOgreApp(const char* app_name, int w, int h) : AwtkApp(this), OgreApp(app_name, w, h) {
   }
 
   virtual ~AwtkOgreApp() {
