@@ -256,5 +256,7 @@ static ret_t native_window_on_resized_timer(const timer_info_t* info) {
 
 NativeWindowPair OgreApp::createWindow(const Ogre::String& name, uint32_t w, uint32_t h,
                                        Ogre::NameValuePairList miscParams) {
+  miscParams["FSAA"] = 4;                                       
   return ApplicationContextSDL::createWindow(name, mWidth, mHeight, miscParams);
 }
+
