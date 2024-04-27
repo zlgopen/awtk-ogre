@@ -17,8 +17,8 @@
   </view>
 
   <view x="r" y="b" w="240" h="68" children_layout="default(r=2,c=2,s=5)" name="toolbar">
-    <button name="dialog" text="button"/>
-    <label name="label" text="label"/>
+    <button name="window" text="window"/>
+    <button name="dialog" text="dialog"/>
     <edit name="edit" text=""/>
     <combo_box name="options" options="1;2;3;4;5;6" value="0"/>
   </view>

@@ -2,8 +2,14 @@
 #include "awtk_ogre_app.hpp"
 
 static ret_t on_dialog_clicked(void* ctx, event_t* e) {
-  dialog_info("Hello", "Hello Awtk Ogre");
-  return RET_OK;
+  return dialog_info("awtk", "hello awtk ogre demo.");
+}
+
+static ret_t on_window_clicked(void* ctx, event_t* e) {
+  file_chooser_t* chooser = file_chooser_create();
+  return_value_if_fail(chooser != NULL, RET_OOM);
+  file_chooser_set_init_dir(chooser, "./");
+  return file_chooser_choose_file_for_open(chooser);
 }
 
 class DemoApp : public AwtkOgreApp {
@@ -16,6 +22,7 @@ class DemoApp : public AwtkOgreApp {
 
     this->hookCameraButtons(win);
     widget_child_on(win, "dialog", EVT_CLICK, on_dialog_clicked, NULL);
+    widget_child_on(win, "window", EVT_CLICK, on_window_clicked, NULL);
 
     return RET_OK;
   }
